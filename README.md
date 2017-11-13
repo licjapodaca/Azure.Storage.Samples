@@ -1,2 +1,2 @@
-# Azure.Storage.Samples
-Samples using different kind of Azure Storages
+# Code Samples using different Azure Storages
+
