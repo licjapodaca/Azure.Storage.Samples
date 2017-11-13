@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Azure.Storage.SAS.Models.BlobImage>
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+</head>
+<body>
+
+	@foreach (var item in Model)
+	{
+		<img src="@item.BlobUri" /> <br />
+	}
+
+</body>
+</html>
