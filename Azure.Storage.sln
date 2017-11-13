@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.Storage.Blob", "Azure.Storage.ConfigurationManager\Azure.Storage.Blob.csproj", "{881642AC-F166-4669-BCEC-DE868F7C85F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.Storage.Blob", "Azure.Storage.Blob\Azure.Storage.Blob.csproj", "{881642AC-F166-4669-BCEC-DE868F7C85F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.Storage.Tables", "Azure.Storage.Tables\Azure.Storage.Tables.csproj", "{CF798267-A805-49D6-8654-4F8ADCAEF75F}"
 EndProject

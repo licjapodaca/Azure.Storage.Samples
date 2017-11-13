@@ -1,2 +1,2 @@
-# Code Samples using different Azure Storages
+# Code Samples using different types of Azure Storages
 
