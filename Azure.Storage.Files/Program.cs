@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.File;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace Azure.Storage.Files
 		static void Main(string[] args)
 		{
 			string path = "";
+			bool OPCION_EXISTE = true;
 
 			while (_opcion.KeyChar.ToString().Trim().ToUpper() != "X")
 			{
@@ -40,6 +42,7 @@ namespace Azure.Storage.Files
 				Console.WriteLine("(3) File upload");
 				Console.WriteLine("(X) Exit\n\n");
 				Console.Write("Opcion: ");
+
 				_opcion = Console.ReadKey();
 
 				switch (_opcion.KeyChar.ToString().Trim().ToUpper())
@@ -49,6 +52,7 @@ namespace Azure.Storage.Files
 						GetFilesAndDirectories("/");
 
 						break;
+
 					case "2":
 
 						Console.Clear();
@@ -59,6 +63,7 @@ namespace Azure.Storage.Files
 						GetFilesAndDirectories(path);
 
 						break;
+
 					case "3":
 
 						Console.Clear();
@@ -72,13 +77,22 @@ namespace Azure.Storage.Files
 						Console.WriteLine("\n\nFile [{0}] uploaded...", path);
 
 						break;
+
+					default:
+						OPCION_EXISTE = false;
+						break;
 				}
 
 				if (_opcion.KeyChar.ToString().Trim().ToUpper() == "X")
 					break;
 
-				Console.WriteLine("\n\nPress any key to continue...");
-				Console.ReadKey();
+				if (OPCION_EXISTE)
+				{
+					Console.WriteLine("\n\nPress any key to continue...");
+					Console.ReadKey();
+				}
+				else
+					OPCION_EXISTE = true;
 			}
 		}
 
@@ -107,6 +121,20 @@ namespace Azure.Storage.Files
 
 				_storageAccount = CloudStorageAccount.Parse(
 					CloudConfigurationManager.GetSetting("StorageConnection"));
+
+				SharedAccessAccountPolicy policy = new SharedAccessAccountPolicy()
+				{
+					Permissions = SharedAccessAccountPermissions.Read | SharedAccessAccountPermissions.Write | SharedAccessAccountPermissions.List,
+					Services = SharedAccessAccountServices.Blob | SharedAccessAccountServices.File,
+					ResourceTypes = SharedAccessAccountResourceTypes.Service,
+					SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
+					Protocols = SharedAccessProtocol.HttpsOnly
+				};
+				
+				StorageCredentials accountSAS = new StorageCredentials(_storageAccount.GetSharedAccessSignature(policy));
+
+				_storageAccount = new CloudStorageAccount(accountSAS, accountName: "justicia4gstore", endpointSuffix: null , useHttps: true);
+
 				_share = _storageAccount.CreateCloudFileClient().GetShareReference("documentos");
 				_share.CreateIfNotExists();
 
@@ -115,6 +143,7 @@ namespace Azure.Storage.Files
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
+				Console.ReadKey();
 			}
 		}
 
@@ -134,7 +163,7 @@ namespace Azure.Storage.Files
 					Console.WriteLine(String.Format("{0, -60} {1, -10} {2, -30}\n", (new String('=', 60)), (new String('=', 10)), (new String('=', 30))));
 					foreach (var item in directory.ListFilesAndDirectories())
 					{
-						if(item.GetType() == typeof(CloudFile))
+						if (item.GetType() == typeof(CloudFile))
 						{
 							((CloudFile)item).FetchAttributes();
 						}
