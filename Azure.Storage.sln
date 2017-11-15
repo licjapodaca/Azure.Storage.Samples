@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.Storage.Files", "Azure.Storage.Files\Azure.Storage.Files.csproj", "{CAAD893E-145A-4A0D-B24B-2FBBEC33D3AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B33D4615-57D5-4909-98B9-6D2BB28CBB1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B33D4615-57D5-4909-98B9-6D2BB28CBB1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B33D4615-57D5-4909-98B9-6D2BB28CBB1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAD893E-145A-4A0D-B24B-2FBBEC33D3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAD893E-145A-4A0D-B24B-2FBBEC33D3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAD893E-145A-4A0D-B24B-2FBBEC33D3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAD893E-145A-4A0D-B24B-2FBBEC33D3AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
