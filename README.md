@@ -12,6 +12,10 @@ An awesome solution to decouple the Application Server from the Database Server 
 
 A No-SQL solution to store masive data without applying any kind of relational architecture.
 
+## File Storage
+
+A great solution sample in using the Azure File Storage service, features like listing, deleting, downloading and uploading files with the help of a Share Access File Policy security.
+
 ## Shared Access Signature (SAS)
 
 A sample of how to provision a Shared Access Token to private containers either Blob, Files, Queues or Tables Storages.
